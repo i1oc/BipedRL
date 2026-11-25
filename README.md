@@ -41,7 +41,8 @@ Every milestone is released on its own and is playable without the next ones.
 BipedRL/                  repository root
 ├─ BipedRL/               Unity project (open this folder with Unity Hub)
 ├─ training/              ML-Agents training configuration and Python setup
-├─ docs/                  UML (draw.io) and delivery documents
+├─ docs/                  design notes, UML (draw.io) and delivery documents
+├─ CONTRIBUTING.md        Git workflow, code conventions and Unity rules
 └─ THIRD_PARTY_NOTICES.md licenses of third-party material
 ```
 
@@ -70,10 +71,35 @@ pip install -r training\requirements.txt
 mlagents-learn --help
 ```
 
+Versions: ML-Agents 4.2.0 in Unity (with Sentis 2.6.1), `mlagents` 1.1.0 and
+`torch` 2.5.1 in Python. Do not upgrade `torch` past 2.8: PyTorch 2.9 and later break
+the ONNX export ML-Agents relies on.
+
+### Train
+
+With the virtual environment active, run one of these and press Play in the training
+scene when asked:
+
+```powershell
+mlagents-learn training\config\<config>.yaml --run-id=<run-id> --results-dir=training\results
+mlagents-learn training\config\<config>.yaml --run-id=<run-id> --results-dir=training\results --resume
+tensorboard --logdir training\results
+```
+
+- `<run-id>` format: `<milestone>-<short-description>-<nn>`, for example `m1-stand-01`.
+- The chosen checkpoints are copied to `BipedRL/Assets/BipedRL/Policies/`. Training
+  configs and chosen policies are committed; `training/results/` is not.
+
+## Design
+
+The robot, physics, learning setup and design patterns are described in
+[docs/design.md](docs/design.md).
+
 ## How we work
 
 Every change goes `feature/*` → `develop` → `main` through reviewed pull requests.
-Each milestone is merged to `main` and tagged with a GitHub Release.
+Each milestone is merged to `main` and tagged with a GitHub Release. The full rules
+are in [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Authors
 
