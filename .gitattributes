@@ -1,0 +1,57 @@
+# ===========================================================================
+# BipedRL .gitattributes
+# ===========================================================================
+
+# Normalise line endings for every text file Git detects.
+* text=auto
+
+# --- Code and docs -----------------------------------------------------------
+*.cs      text diff=csharp
+*.md      text
+*.yaml    text
+*.yml     text
+*.json    text
+*.txt     text
+*.urdf    text
+*.drawio  text
+
+# --- Unity YAML assets ---------------------------------------------------------
+# merge=unityyamlmerge uses Unity Smart Merge when the merge driver is set up
+# in your local git config (see CONTRIBUTING.md, "Unity Smart Merge"). Without it,
+# Git falls back to a normal text merge.
+*.unity             text eol=lf merge=unityyamlmerge
+*.prefab            text eol=lf merge=unityyamlmerge
+*.asset             text eol=lf merge=unityyamlmerge
+*.meta              text eol=lf merge=unityyamlmerge
+*.mat               text eol=lf merge=unityyamlmerge
+*.anim              text eol=lf merge=unityyamlmerge
+*.controller        text eol=lf merge=unityyamlmerge
+*.overrideController text eol=lf merge=unityyamlmerge
+*.physicMaterial    text eol=lf merge=unityyamlmerge
+*.physicsMaterial   text eol=lf merge=unityyamlmerge
+*.mask              text eol=lf merge=unityyamlmerge
+*.playable          text eol=lf merge=unityyamlmerge
+*.inputactions      text eol=lf
+
+# --- Binaries: never diff or merge as text (no Git LFS for now) ----------------
+*.onnx    binary
+*.sentis  binary
+*.fbx     binary
+*.obj     binary
+*.stl     binary
+*.blend   binary
+*.png     binary
+*.jpg     binary
+*.jpeg    binary
+*.tga     binary
+*.psd     binary
+*.exr     binary
+*.hdr     binary
+*.wav     binary
+*.mp3     binary
+*.ogg     binary
+*.ttf     binary
+*.otf     binary
+*.pdf     binary
+*.zip     binary
+*.dll     binary
