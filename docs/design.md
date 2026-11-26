@@ -69,12 +69,15 @@ Pitfalls to keep in mind:
 
   No world positions or other information a real robot would not have.
 - **Actions (10, continuous in [-1, 1]):** joint target = default angle + 0.25 · action
-  (rad), tracked by the PD drives. The policy runs at 50 Hz.
+  (rad), tracked by the PD drives. Physics runs at 100 Hz and the policy decides every
+  second step, at 50 Hz.
 - **Reward:** weighted sum of terms (alive bonus; penalties for tilt, base height
-  error, action rate, joint velocity, torque and joint limits). The weights live in a
-  ScriptableObject.
+  error, action rate, joint velocity, torque and joint limits).
 - **Episode end (fail):** pelvis below a minimum height, torso tilt above a maximum
   angle, or any body other than a foot touching the ground.
+- Each reward term and termination condition is a ScriptableObject asset holding its
+  weight or threshold, and an episode configuration asset lists the ones in use, so each
+  level or training stage can combine them differently.
 - **Pushes:** random pushes on the pelvis whose strength grows during training.
 
 ## Game loop
