@@ -66,6 +66,11 @@ __pycache__/
 *.py[cod]
 .ipynb_checkpoints/
 
+# ML-Agents writes profiling timers into Assets/ML-Agents/ on every Play.
+# These rules come after the .meta exception so the folder's .meta is ignored too.
+/BipedRL/[Aa]ssets/ML-Agents/
+/BipedRL/[Aa]ssets/ML-Agents.meta
+
 # --- Course material (kept locally only, not ours to publish) -------------
 /docs/course/
 
