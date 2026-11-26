@@ -159,7 +159,7 @@ folders, and Unity would leave orphan `.meta` files).
 - No public fields: use `[SerializeField] private` fields and properties.
 - One public type per file, named after the type.
 - Namespaces under `BipedRL`: `BipedRL.Robot`, `BipedRL.Agents`, `BipedRL.Training`,
-  `BipedRL.Game`, `BipedRL.UI`, `BipedRL.Editor`.
+  `BipedRL.Commands`, `BipedRL.Pushes`, `BipedRL.Game`, `BipedRL.UI`, `BipedRL.Editor`.
 - Comments explain *why*, not *what*. Everything is in English.
 
 ### Principles
