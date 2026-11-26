@@ -137,6 +137,14 @@ namespace BipedRL.Robot
         }
 
         /// <summary>
+        /// Gives the pelvis an instantaneous push, in N·s and world coordinates.
+        /// </summary>
+        public void ApplyPush(Vector3 impulse)
+        {
+            rootBody.AddForce(impulse, ForceMode.Impulse);
+        }
+
+        /// <summary>
         /// Reads the robot's sensors. The returned instance is refilled on the next call.
         /// </summary>
         public RobotState ReadState()
