@@ -77,12 +77,20 @@ later break the ONNX export ML-Agents relies on.
 
 ### Train
 
-With the virtual environment active, run one of these and press Play in the training
-scene when asked:
+With the virtual environment active, start a run from the repository root, then open
+the training scene in Unity and press Play when the console asks for it:
+
+| Milestone | Config | Training scene |
+|---|---|---|
+| 1. Stand | `training/config/stand.yaml` | `Assets/BipedRL/Scenes/Training/StandTraining.unity` |
 
 ```powershell
-mlagents-learn training\config\<config>.yaml --run-id=<run-id> --results-dir=training\results
-mlagents-learn training\config\<config>.yaml --run-id=<run-id> --results-dir=training\results --resume
+mlagents-learn training\config\stand.yaml --run-id=m1-stand-01 --results-dir=training\results
+```
+
+Resume a stopped run with the same command plus `--resume`, and follow the progress with:
+
+```powershell
 tensorboard --logdir training\results
 ```
 

@@ -1,0 +1,35 @@
+# ML-Agents trainer configuration for milestone 1: stand and resist pushes.
+# Starting values close to the ML-Agents Walker example; they are tuned while training.
+#
+# Run from the repository root with the virtual environment active, then press Play in
+# the StandTraining scene:
+#   mlagents-learn training\config\stand.yaml --run-id=m1-stand-01 --results-dir=training\results
+
+behaviors:
+  Stand:                          # must match Behavior Name in the H1StandAgent prefab
+    trainer_type: ppo
+    hyperparameters:
+      batch_size: 2048
+      buffer_size: 20480
+      learning_rate: 3.0e-4
+      learning_rate_schedule: linear
+      beta: 5.0e-3                # entropy bonus: keeps exploring early on
+      epsilon: 0.2
+      lambd: 0.95
+      num_epoch: 3
+    network_settings:
+      normalize: false            # StandAgent already scales its observations
+      hidden_units: 256
+      num_layers: 3
+    reward_signals:
+      extrinsic:
+        gamma: 0.99
+        strength: 1.0
+    time_horizon: 1000
+    max_steps: 10000000           # decisions summed over every robot in the scene
+    summary_freq: 20000
+    checkpoint_interval: 500000   # checkpoints to choose the partially trained policy from
+    keep_checkpoints: 20
+
+engine_settings:
+  time_scale: 20                  # simulation speed-up while training in the editor
