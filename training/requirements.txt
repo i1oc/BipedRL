@@ -6,8 +6,9 @@
 #   - PyTorch 2.1.1 - 2.8.0. PyTorch 2.9+ breaks the ONNX export ML-Agents
 #     uses, and mlagents 1.1.0 on PyPI does not cap it, so torch is pinned here.
 #
-# torch 2.5.1+cu121 is the newest build on the CUDA 12.1 index that the official
-# docs point to for Windows. It needs an NVIDIA driver that supports CUDA 12.1.
+# torch 2.8.0+cu128 is the newest allowed version and is built with CUDA 12.8,
+# which RTX 50 series (Blackwell) GPUs need; it also runs on older NVIDIA GPUs.
+# It needs an NVIDIA driver that supports CUDA 12.8 (version 570 or later).
 #
 # Setup (PowerShell, from the repository root):
 #   py -3.10 -m venv .venv
@@ -15,6 +16,6 @@
 #   python -m pip install --upgrade pip
 #   pip install -r training\requirements.txt
 
---extra-index-url https://download.pytorch.org/whl/cu121
-torch==2.5.1+cu121
+--extra-index-url https://download.pytorch.org/whl/cu128
+torch==2.8.0+cu128
 mlagents==1.1.0

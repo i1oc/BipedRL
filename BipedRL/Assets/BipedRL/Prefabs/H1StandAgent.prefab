@@ -96,7 +96,7 @@ MonoBehaviour:
   agentParameters:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
-  MaxStep: 0
+  MaxStep: 2000
   episodeConfig: {fileID: 11400000, guid: 8b66fdb8deab9a4409d8e4a53f2e89c1, type: 2}
 --- !u!1001 &8929316027490529406
 PrefabInstance:

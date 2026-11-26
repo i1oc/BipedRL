@@ -72,17 +72,25 @@ mlagents-learn --help
 ```
 
 Versions: ML-Agents 4.2.0 in Unity (with Sentis 2.6.1), `mlagents` 1.1.0 and
-`torch` 2.5.1 in Python. Do not upgrade `torch` past 2.8: PyTorch 2.9 and later break
-the ONNX export ML-Agents relies on.
+`torch` 2.8.0 (CUDA 12.8) in Python. Do not upgrade `torch` past 2.8: PyTorch 2.9 and
+later break the ONNX export ML-Agents relies on.
 
 ### Train
 
-With the virtual environment active, run one of these and press Play in the training
-scene when asked:
+With the virtual environment active, start a run from the repository root, then open
+the training scene in Unity and press Play when the console asks for it:
+
+| Milestone | Config | Training scene |
+|---|---|---|
+| 1. Stand | `training/config/stand.yaml` | `Assets/BipedRL/Scenes/Training/StandTraining.unity` |
 
 ```powershell
-mlagents-learn training\config\<config>.yaml --run-id=<run-id> --results-dir=training\results
-mlagents-learn training\config\<config>.yaml --run-id=<run-id> --results-dir=training\results --resume
+mlagents-learn training\config\stand.yaml --run-id=m1-stand-01 --results-dir=training\results
+```
+
+Resume a stopped run with the same command plus `--resume`, and follow the progress with:
+
+```powershell
 tensorboard --logdir training\results
 ```
 
