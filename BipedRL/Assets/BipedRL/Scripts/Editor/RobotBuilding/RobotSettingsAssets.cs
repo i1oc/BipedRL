@@ -34,7 +34,7 @@ namespace BipedRL.Editor.RobotBuilding
             }
 
             settings = ScriptableObject.CreateInstance<RobotShapeSettings>();
-            settings.Configure(H1Defaults.Shapes());
+            settings.Configure(H1Defaults.Shapes(), H1Defaults.FootLinks());
             CreateAsset(settings, H1AssetPaths.ShapeSettings);
             return settings;
         }

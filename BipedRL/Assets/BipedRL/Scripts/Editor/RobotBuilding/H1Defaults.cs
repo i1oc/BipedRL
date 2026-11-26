@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using BipedRL.Robot;
 using UnityEngine;
 
@@ -50,6 +51,12 @@ namespace BipedRL.Editor.RobotBuilding
                 yield return LinkShape.Capsule($"{side}_knee_link", new Vector3(0f, -0.2f, 0f), 0.045f, 0.34f);
                 yield return LinkShape.Box($"{side}_ankle_link", new Vector3(0f, -0.0295f, 0.05f), new Vector3(0.08f, 0.081f, 0.3f));
             }
+        }
+
+        /// <summary>The ankle links carry the feet; the left foot comes first.</summary>
+        public static IEnumerable<string> FootLinks()
+        {
+            return Sides.Select(side => $"{side}_ankle_link");
         }
     }
 }
