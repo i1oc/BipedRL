@@ -18,5 +18,13 @@ namespace BipedRL.Editor.Urdf
             Position = position;
             Rotation = rotation;
         }
+
+        /// <summary>
+        /// Pose of a frame given relative to this one, expressed in this pose's parent frame.
+        /// </summary>
+        public UrdfPose Compose(UrdfPose child)
+        {
+            return new UrdfPose(Position + Rotation * child.Position, Rotation * child.Rotation);
+        }
     }
 }
