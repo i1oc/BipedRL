@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c918bb8ca805f146b7f9af13a6316a2, type: 3}
+  m_Name: H1JointSettings
+  m_EditorClassIdentifier: Assembly-CSharp::BipedRL.Robot.RobotJointSettings
+  defaultPelvisHeight: 1.04
+  joints:
+  - jointName: left_hip_yaw_joint
+    stiffness: 150
+    damping: 2
+    defaultAngle: 0
+  - jointName: left_hip_roll_joint
+    stiffness: 150
+    damping: 2
+    defaultAngle: 0
+  - jointName: left_hip_pitch_joint
+    stiffness: 150
+    damping: 2
+    defaultAngle: -0.1
+  - jointName: left_knee_joint
+    stiffness: 200
+    damping: 4
+    defaultAngle: 0.3
+  - jointName: left_ankle_joint
+    stiffness: 40
+    damping: 2
+    defaultAngle: -0.2
+  - jointName: right_hip_yaw_joint
+    stiffness: 150
+    damping: 2
+    defaultAngle: 0
+  - jointName: right_hip_roll_joint
+    stiffness: 150
+    damping: 2
+    defaultAngle: 0
+  - jointName: right_hip_pitch_joint
+    stiffness: 150
+    damping: 2
+    defaultAngle: -0.1
+  - jointName: right_knee_joint
+    stiffness: 200
+    damping: 4
+    defaultAngle: 0.3
+  - jointName: right_ankle_joint
+    stiffness: 40
+    damping: 2
+    defaultAngle: -0.2
