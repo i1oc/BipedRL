@@ -11,7 +11,8 @@ namespace BipedRL.Editor.RobotBuilding
     /// components. It walks the link tree from the root; for every joint it asks the
     /// <see cref="JointBuilderFactory"/> for the right builder, then adds the child link's
     /// mass and shape to wherever that builder placed it. Finally it adds the
-    /// <see cref="RobotBody"/> facade and connects it to the joints and feet.
+    /// <see cref="RobotBody"/> facade and connects it to the joints and to a contact
+    /// sensor on every body.
     /// </summary>
     public sealed class ArticulationRobotBuilder
     {
@@ -46,11 +47,16 @@ namespace BipedRL.Editor.RobotBuilding
                 body.ApplyMass();
             }
 
+            Dictionary<BuiltBody, ContactSensor> sensors = parts.Bodies.ToDictionary(
+                body => body, body => body.GameObject.AddComponent<ContactSensor>());
+            List<ContactSensor> feet = shapeSettings.FootLinks.Select(link => sensors[parts.FootBodies[link]]).ToList();
+
             root.AddComponent<RobotBody>().Configure(
                 jointSettings,
                 rootBody.ArticulationBody,
                 jointSettings.Joints.Select(joint => parts.JointBodies[joint.JointName]),
-                shapeSettings.FootLinks.Select(link => parts.Feet[link]));
+                feet,
+                sensors.Values.Except(feet));
             return root;
         }
 
@@ -79,7 +85,7 @@ namespace BipedRL.Editor.RobotBuilding
 
             if (shapeSettings.IsFoot(link.Name))
             {
-                parts.Feet[link.Name] = placement.Body.GameObject.AddComponent<FootContact>();
+                parts.FootBodies[link.Name] = placement.Body;
             }
 
             foreach (UrdfJoint joint in robot.GetChildJoints(link.Name))
@@ -100,7 +106,7 @@ namespace BipedRL.Editor.RobotBuilding
         {
             public List<BuiltBody> Bodies { get; }
             public Dictionary<string, ArticulationBody> JointBodies { get; } = new Dictionary<string, ArticulationBody>();
-            public Dictionary<string, FootContact> Feet { get; } = new Dictionary<string, FootContact>();
+            public Dictionary<string, BuiltBody> FootBodies { get; } = new Dictionary<string, BuiltBody>();
 
             public RobotParts(BuiltBody rootBody)
             {

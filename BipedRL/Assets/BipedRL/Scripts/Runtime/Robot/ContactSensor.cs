@@ -3,11 +3,11 @@ using UnityEngine;
 namespace BipedRL.Robot
 {
     /// <summary>
-    /// Foot sensor: reports whether a foot body touches the environment, like the foot
-    /// contact sensors of the real robot.
+    /// Reports whether a robot body touches the environment. On the feet it plays the role
+    /// of the real robot's foot sensors; on the other bodies it detects falls.
     /// </summary>
     [RequireComponent(typeof(ArticulationBody))]
-    public sealed class FootContact : MonoBehaviour
+    public sealed class ContactSensor : MonoBehaviour
     {
         private int environmentContacts;
 
