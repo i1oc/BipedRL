@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using BipedRL.Editor.Urdf;
 using UnityEditor;
@@ -29,7 +30,7 @@ namespace BipedRL.Editor.RobotBuilding
                 Debug.Log($"Built {H1AssetPaths.Prefab} from {H1AssetPaths.Urdf}.");
             }
             catch (Exception exception) when (exception is UrdfFormatException || exception is IOException ||
-                                              exception is NotSupportedException)
+                                              exception is NotSupportedException || exception is KeyNotFoundException)
             {
                 Debug.LogError($"Could not build the H1 prefab: {exception.Message}");
             }
