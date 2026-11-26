@@ -72,8 +72,8 @@ mlagents-learn --help
 ```
 
 Versions: ML-Agents 4.2.0 in Unity (with Sentis 2.6.1), `mlagents` 1.1.0 and
-`torch` 2.5.1 in Python. Do not upgrade `torch` past 2.8: PyTorch 2.9 and later break
-the ONNX export ML-Agents relies on.
+`torch` 2.8.0 (CUDA 12.8) in Python. Do not upgrade `torch` past 2.8: PyTorch 2.9 and
+later break the ONNX export ML-Agents relies on.
 
 ### Train
 
