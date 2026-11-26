@@ -77,23 +77,36 @@ later break the ONNX export ML-Agents relies on.
 
 ### Train
 
-With the virtual environment active, start a run from the repository root, then open
-the training scene in Unity and press Play when the console asks for it:
-
 | Milestone | Config | Training scene |
 |---|---|---|
 | 1. Stand | `training/config/stand.yaml` | `Assets/BipedRL/Scenes/Training/StandTraining.unity` |
 
+**Fast: with a player build (recommended).** In Unity, open **File → Build Profiles**,
+select the **Windows Training** profile and build it into `BipedRL/Builds/StandTraining/`
+(ignored by Git). Rebuild after any change to scripts or the training scene. Then, with the
+virtual environment active, from the repository root:
+
 ```powershell
-mlagents-learn training\config\stand.yaml --run-id=m1-stand-01 --results-dir=training\results
+mlagents-learn training\config\stand.yaml --run-id=m1-stand-02 --results-dir=training\results --env=BipedRL\Builds\StandTraining\BipedRL.exe --num-envs=4 --no-graphics
 ```
 
-Resume a stopped run with the same command plus `--resume`, and follow the progress with:
+It runs four copies of the scene without graphics (about 2000 steps/s on an RTX 5080
+laptop, against about 900 in the editor) and does not need the editor open.
 
-```powershell
-tensorboard --logdir training\results
-```
+**In the editor.** Run the command without `--env`, `--num-envs` and `--no-graphics`, and
+add `--timeout-wait=600` so it waits up to 10 minutes for Play. Then open the training
+scene and press Play. Keep Unity restored (not minimized) and set
+**Edit → Preferences → General → Interaction Mode** to **No Throttling**, or training
+slows down or stops.
 
+Both ways:
+
+- Stop a run with **Ctrl+C** in the terminal: the trainer then saves the model. Stopping
+  Play in the editor does not end the run; it waits for Play again.
+- Resume a stopped run with the same command plus `--resume`.
+- Follow the progress with `tensorboard --logdir training\results`. During training the
+  actions include exploration noise; judge a policy in Unity with **Behavior Type =
+  Inference Only** and **Deterministic Inference** ticked.
 - `<run-id>` format: `<milestone>-<short-description>-<nn>`, for example `m1-stand-01`.
 - The chosen checkpoints are copied to `BipedRL/Assets/BipedRL/Policies/`. Training
   configs and chosen policies are committed; `training/results/` is not.
