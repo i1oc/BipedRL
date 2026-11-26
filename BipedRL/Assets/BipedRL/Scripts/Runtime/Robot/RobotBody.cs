@@ -20,7 +20,11 @@ namespace BipedRL.Robot
         [Tooltip("Actuated joints, in the same order as the joint settings.")]
         [SerializeField] private ArticulationBody[] joints = Array.Empty<ArticulationBody>();
 
-        [SerializeField] private FootContact[] feet = Array.Empty<FootContact>();
+        [Tooltip("Contact sensors of the feet, in the order the robot reports them.")]
+        [SerializeField] private ContactSensor[] feet = Array.Empty<ContactSensor>();
+
+        [Tooltip("Contact sensors of every body that is not a foot.")]
+        [SerializeField] private ContactSensor[] otherBodies = Array.Empty<ContactSensor>();
 
         // Reduced-coordinate buffers covering the whole articulation, reused on every call
         // so nothing is allocated during training.
@@ -42,6 +46,9 @@ namespace BipedRL.Robot
         public int FootCount => feet.Length;
         public IReadOnlyList<string> JointNames => jointNames;
 
+        /// <summary>Height of the pelvis above the ground in the default pose, in metres.</summary>
+        public float DefaultBaseHeight => jointSettings.DefaultPelvisHeight;
+
         /// <summary>Angles of the default standing pose, in radians.</summary>
         public IReadOnlyList<float> DefaultJointAngles => defaultAngles;
 
@@ -60,12 +67,14 @@ namespace BipedRL.Robot
         /// builds the prefab.
         /// </summary>
         public void Configure(RobotJointSettings settings, ArticulationBody root,
-                              IEnumerable<ArticulationBody> jointBodies, IEnumerable<FootContact> footContacts)
+                              IEnumerable<ArticulationBody> jointBodies, IEnumerable<ContactSensor> footSensors,
+                              IEnumerable<ContactSensor> otherBodySensors)
         {
             jointSettings = settings;
             rootBody = root;
             joints = jointBodies.ToArray();
-            feet = footContacts.ToArray();
+            feet = footSensors.ToArray();
+            otherBodies = otherBodySensors.ToArray();
         }
 
         private void Awake()
@@ -156,7 +165,23 @@ namespace BipedRL.Robot
                 state.SetFootContact(foot, feet[foot].IsTouching);
             }
 
+            state.SetNonFootContact(AnyOtherBodyTouching());
+
             return state;
+        }
+
+        // A plain loop instead of LINQ's Any, which would allocate on every read.
+        private bool AnyOtherBodyTouching()
+        {
+            foreach (ContactSensor body in otherBodies)
+            {
+                if (body.IsTouching)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         private void WriteJointValues(IReadOnlyList<float> values, List<float> reducedValues)

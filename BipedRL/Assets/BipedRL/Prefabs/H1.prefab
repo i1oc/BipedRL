@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5492782219443653809}
   - component: {fileID: 6534439779785932292}
+  - component: {fileID: 73102754818369019}
   m_Layer: 0
   m_Name: right_hip_roll_link
   m_TagString: Untagged
@@ -99,6 +100,18 @@ ArticulationBody:
   m_Immovable: 0
   m_UseGravity: 1
   m_CollisionDetectionMode: 0
+--- !u!114 &73102754818369019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 159959634521955695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c551f4196a85d74e806356345297ed8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BipedRL.Robot.ContactSensor
 --- !u!1 &2111342575254289465
 GameObject:
   m_ObjectHideFlags: 0
@@ -109,6 +122,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1498735895616853400}
   - component: {fileID: 4944890126779968129}
+  - component: {fileID: 3107884271915107947}
   m_Layer: 0
   m_Name: pelvis
   m_TagString: Untagged
@@ -201,6 +215,18 @@ ArticulationBody:
   m_Immovable: 0
   m_UseGravity: 1
   m_CollisionDetectionMode: 0
+--- !u!114 &3107884271915107947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2111342575254289465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c551f4196a85d74e806356345297ed8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BipedRL.Robot.ContactSensor
 --- !u!1 &2161676855005843374
 GameObject:
   m_ObjectHideFlags: 0
@@ -435,6 +461,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1483201584200782362}
   - component: {fileID: 8341424585527098513}
+  - component: {fileID: 1533970078303850014}
   m_Layer: 0
   m_Name: right_hip_yaw_link
   m_TagString: Untagged
@@ -524,6 +551,18 @@ ArticulationBody:
   m_Immovable: 0
   m_UseGravity: 1
   m_CollisionDetectionMode: 0
+--- !u!114 &1533970078303850014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2899178434411864796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c551f4196a85d74e806356345297ed8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BipedRL.Robot.ContactSensor
 --- !u!1 &3555423446895189399
 GameObject:
   m_ObjectHideFlags: 0
@@ -585,6 +624,16 @@ MonoBehaviour:
   feet:
   - {fileID: 1351561702957366089}
   - {fileID: 6052886047707917208}
+  otherBodies:
+  - {fileID: 3107884271915107947}
+  - {fileID: 4711401838644880455}
+  - {fileID: 4246859289538600045}
+  - {fileID: 4011908733893238226}
+  - {fileID: 1140645735582658979}
+  - {fileID: 1533970078303850014}
+  - {fileID: 73102754818369019}
+  - {fileID: 3356006850220135489}
+  - {fileID: 1697184751304262013}
 --- !u!1 &4709684671968206663
 GameObject:
   m_ObjectHideFlags: 0
@@ -709,6 +758,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5811099418913999386}
   - component: {fileID: 774326380918463956}
+  - component: {fileID: 4711401838644880455}
   m_Layer: 0
   m_Name: left_hip_yaw_link
   m_TagString: Untagged
@@ -798,6 +848,18 @@ ArticulationBody:
   m_Immovable: 0
   m_UseGravity: 1
   m_CollisionDetectionMode: 0
+--- !u!114 &4711401838644880455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4713071870116064322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c551f4196a85d74e806356345297ed8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BipedRL.Robot.ContactSensor
 --- !u!1 &5058894288904319294
 GameObject:
   m_ObjectHideFlags: 0
@@ -808,6 +870,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6599327680632218279}
   - component: {fileID: 8089746414277001143}
+  - component: {fileID: 3356006850220135489}
   m_Layer: 0
   m_Name: right_hip_pitch_link
   m_TagString: Untagged
@@ -898,6 +961,18 @@ ArticulationBody:
   m_Immovable: 0
   m_UseGravity: 1
   m_CollisionDetectionMode: 0
+--- !u!114 &3356006850220135489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5058894288904319294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c551f4196a85d74e806356345297ed8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BipedRL.Robot.ContactSensor
 --- !u!1 &5424348696390525637
 GameObject:
   m_ObjectHideFlags: 0
@@ -1009,7 +1084,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8c551f4196a85d74e806356345297ed8, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BipedRL.Robot.FootContact
+  m_EditorClassIdentifier: Assembly-CSharp::BipedRL.Robot.ContactSensor
 --- !u!1 &5963576725441661788
 GameObject:
   m_ObjectHideFlags: 0
@@ -1248,6 +1323,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7837237212247892105}
   - component: {fileID: 8827875161733338060}
+  - component: {fileID: 4246859289538600045}
   m_Layer: 0
   m_Name: left_hip_roll_link
   m_TagString: Untagged
@@ -1337,6 +1413,18 @@ ArticulationBody:
   m_Immovable: 0
   m_UseGravity: 1
   m_CollisionDetectionMode: 0
+--- !u!114 &4246859289538600045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6045572951563921709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c551f4196a85d74e806356345297ed8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BipedRL.Robot.ContactSensor
 --- !u!1 &6211667726174331565
 GameObject:
   m_ObjectHideFlags: 0
@@ -1448,7 +1536,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8c551f4196a85d74e806356345297ed8, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BipedRL.Robot.FootContact
+  m_EditorClassIdentifier: Assembly-CSharp::BipedRL.Robot.ContactSensor
 --- !u!1 &6212205489563633345
 GameObject:
   m_ObjectHideFlags: 0
@@ -1573,6 +1661,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2911450485568348656}
   - component: {fileID: 8833107124567151971}
+  - component: {fileID: 1697184751304262013}
   m_Layer: 0
   m_Name: right_knee_link
   m_TagString: Untagged
@@ -1663,6 +1752,18 @@ ArticulationBody:
   m_Immovable: 0
   m_UseGravity: 1
   m_CollisionDetectionMode: 0
+--- !u!114 &1697184751304262013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6900653535413573503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c551f4196a85d74e806356345297ed8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BipedRL.Robot.ContactSensor
 --- !u!1 &7866896715525785883
 GameObject:
   m_ObjectHideFlags: 0
@@ -1673,6 +1774,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2834561952411407246}
   - component: {fileID: 5823611551097456137}
+  - component: {fileID: 1140645735582658979}
   m_Layer: 0
   m_Name: left_knee_link
   m_TagString: Untagged
@@ -1763,6 +1865,18 @@ ArticulationBody:
   m_Immovable: 0
   m_UseGravity: 1
   m_CollisionDetectionMode: 0
+--- !u!114 &1140645735582658979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7866896715525785883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c551f4196a85d74e806356345297ed8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BipedRL.Robot.ContactSensor
 --- !u!1 &8363263774838808920
 GameObject:
   m_ObjectHideFlags: 0
@@ -1885,6 +1999,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1380513588796125713}
   - component: {fileID: 3049191907821592283}
+  - component: {fileID: 4011908733893238226}
   m_Layer: 0
   m_Name: left_hip_pitch_link
   m_TagString: Untagged
@@ -1975,6 +2090,18 @@ ArticulationBody:
   m_Immovable: 0
   m_UseGravity: 1
   m_CollisionDetectionMode: 0
+--- !u!114 &4011908733893238226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8576481871780264147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c551f4196a85d74e806356345297ed8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BipedRL.Robot.ContactSensor
 --- !u!1 &8903503032399366878
 GameObject:
   m_ObjectHideFlags: 0

@@ -46,7 +46,8 @@ namespace BipedRL.Editor
             var report = new StringBuilder($"{robot.name} state (angles in degrees, torque in N·m):\n");
             report.AppendLine($"  base height {state.BaseHeight:F3} m, tilt {state.Tilt * Mathf.Rad2Deg:F1}, " +
                               $"projected gravity {state.ProjectedGravity:F2}, angular velocity {state.BaseAngularVelocity:F2} rad/s");
-            report.AppendLine($"  foot contacts: {string.Join(", ", state.FootContacts)}");
+            report.AppendLine($"  foot contacts: {string.Join(", ", state.FootContacts)}, " +
+                              $"other body contact: {state.NonFootContact}");
 
             for (int joint = 0; joint < robot.JointCount; joint++)
             {

@@ -44,6 +44,9 @@ namespace BipedRL.Robot
         /// <summary>Whether each foot touches the environment, in the order of the robot's feet.</summary>
         public IReadOnlyList<bool> FootContacts => footContacts;
 
+        /// <summary>Whether any body other than a foot touches the environment, which means a fall.</summary>
+        public bool NonFootContact { get; private set; }
+
         internal RobotState(int jointCount, int footCount)
         {
             jointPositions = new float[jointCount];
@@ -72,6 +75,11 @@ namespace BipedRL.Robot
         internal void SetFootContact(int foot, bool touching)
         {
             footContacts[foot] = touching;
+        }
+
+        internal void SetNonFootContact(bool touching)
+        {
+            NonFootContact = touching;
         }
     }
 }
