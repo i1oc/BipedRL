@@ -39,6 +39,7 @@ namespace BipedRL.Robot
         private float groundHeight;
 
         public int JointCount => joints.Length;
+        public int FootCount => feet.Length;
         public IReadOnlyList<string> JointNames => jointNames;
 
         /// <summary>Angles of the default standing pose, in radians.</summary>
