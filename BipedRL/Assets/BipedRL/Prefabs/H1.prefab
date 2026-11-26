@@ -533,6 +533,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5729658279318500321}
+  - component: {fileID: 6775318943518583203}
   m_Layer: 0
   m_Name: H1
   m_TagString: Untagged
@@ -556,6 +557,34 @@ Transform:
   - {fileID: 1498735895616853400}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6775318943518583203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3555423446895189399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2536be449e204624a973d06357a45cdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BipedRL.Robot.RobotBody
+  jointSettings: {fileID: 11400000, guid: 727b01f4e83968240a4dddd5da8da3ab, type: 2}
+  rootBody: {fileID: 4944890126779968129}
+  joints:
+  - {fileID: 774326380918463956}
+  - {fileID: 8827875161733338060}
+  - {fileID: 3049191907821592283}
+  - {fileID: 5823611551097456137}
+  - {fileID: 5698064823820842793}
+  - {fileID: 8341424585527098513}
+  - {fileID: 6534439779785932292}
+  - {fileID: 8089746414277001143}
+  - {fileID: 8833107124567151971}
+  - {fileID: 3710043694567035293}
+  feet:
+  - {fileID: 1351561702957366089}
+  - {fileID: 6052886047707917208}
 --- !u!1 &4709684671968206663
 GameObject:
   m_ObjectHideFlags: 0
@@ -879,6 +908,7 @@ GameObject:
   m_Component:
   - component: {fileID: 145191452075723798}
   - component: {fileID: 5698064823820842793}
+  - component: {fileID: 1351561702957366089}
   m_Layer: 0
   m_Name: left_ankle_link
   m_TagString: Untagged
@@ -968,6 +998,18 @@ ArticulationBody:
   m_Immovable: 0
   m_UseGravity: 1
   m_CollisionDetectionMode: 0
+--- !u!114 &1351561702957366089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5424348696390525637}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c551f4196a85d74e806356345297ed8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BipedRL.Robot.FootContact
 --- !u!1 &5963576725441661788
 GameObject:
   m_ObjectHideFlags: 0
@@ -1305,6 +1347,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7166253224201811008}
   - component: {fileID: 3710043694567035293}
+  - component: {fileID: 6052886047707917208}
   m_Layer: 0
   m_Name: right_ankle_link
   m_TagString: Untagged
@@ -1394,6 +1437,18 @@ ArticulationBody:
   m_Immovable: 0
   m_UseGravity: 1
   m_CollisionDetectionMode: 0
+--- !u!114 &6052886047707917208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6211667726174331565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c551f4196a85d74e806356345297ed8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BipedRL.Robot.FootContact
 --- !u!1 &6212205489563633345
 GameObject:
   m_ObjectHideFlags: 0
