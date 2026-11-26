@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bd652d6c2a80094a84310ddec6eb165, type: 3}
+  m_Name: StandEpisode
+  m_EditorClassIdentifier: Assembly-CSharp::BipedRL.Agents.EpisodeConfig
+  rewardTerms:
+  - {fileID: 11400000, guid: c9e6b904d6171e84581666d18219fc74, type: 2}
+  - {fileID: 11400000, guid: f513a975f7ac7ea418c9b351aa90e2c0, type: 2}
+  - {fileID: 11400000, guid: b18c497af7156cf4c899eae8a30cfa62, type: 2}
+  - {fileID: 11400000, guid: 31d07a9b44d97c04599468a05144ce4c, type: 2}
+  - {fileID: 11400000, guid: 6f16759d3255b7f47a3fa20b03f7109d, type: 2}
+  - {fileID: 11400000, guid: 3cb8864b940bf5e459cadc1c100158a2, type: 2}
+  - {fileID: 11400000, guid: b08f8056696a8644c8892b24c922d4e3, type: 2}
+  terminationConditions:
+  - {fileID: 11400000, guid: f24dee2c7b44cc34ebbfd2d92f8e2f4c, type: 2}
+  - {fileID: 11400000, guid: dcf3b42f0ac7d3a479577e744d08aa41, type: 2}
+  - {fileID: 11400000, guid: 4ea00f52a99df244f9f95538d562e77e, type: 2}
