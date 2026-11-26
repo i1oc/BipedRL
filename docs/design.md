@@ -50,7 +50,9 @@ Pitfalls to keep in mind:
   `SetJointVelocities` and drive targets back to the default pose. Writing
   `transform.position` has no effect.
 - Each joint's slot is found with `GetDofStartIndices`, never hard-coded.
-- Robots in the same training scene must not collide with each other (layers).
+- Robots in the same training scene must not collide with each other. For standing they
+  are placed 4 m apart, more than a robot travels before its episode ends; walking
+  milestones will need to revisit this.
 
 ## Learning (milestone 1: stand and resist pushes)
 

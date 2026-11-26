@@ -30,7 +30,7 @@ namespace BipedRL.Robot
         }
 
         // Other robot parts, such as the other foot, are not ground. Robots never touch
-        // each other because each one lives on a layer that ignores the others.
+        // each other because training scenes keep them far apart.
         private static bool IsEnvironment(Collision collision)
         {
             return collision.articulationBody == null;
