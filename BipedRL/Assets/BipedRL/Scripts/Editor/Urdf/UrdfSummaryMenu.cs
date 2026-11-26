@@ -12,12 +12,12 @@ namespace BipedRL.Editor.Urdf
     /// </summary>
     public static class UrdfSummaryMenu
     {
-        private const string H1UrdfAssetPath = "Assets/ThirdParty/Unitree/H1/h1.urdf";
+        private const string H1UrdfAssetPath = H1AssetPaths.Urdf;
 
         [MenuItem("BipedRL/URDF/Log H1 Summary")]
         private static void LogH1Summary()
         {
-            string fullPath = Path.Combine(Path.GetDirectoryName(Application.dataPath), H1UrdfAssetPath);
+            string fullPath = H1AssetPaths.ToFullPath(H1UrdfAssetPath);
 
             try
             {

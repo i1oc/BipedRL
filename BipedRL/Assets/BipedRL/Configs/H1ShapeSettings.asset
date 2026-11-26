@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27a49c09900f19b47967f19583b94eb2, type: 3}
+  m_Name: H1ShapeSettings
+  m_EditorClassIdentifier: Assembly-CSharp-Editor::BipedRL.Editor.RobotBuilding.RobotShapeSettings
+  shapes:
+  - linkName: pelvis
+    shapeType: 0
+    center: {x: 0, y: -0.0385, z: 0}
+    boxSize: {x: 0.307, y: 0.093, z: 0.138}
+    capsuleRadius: 0
+    capsuleHeight: 0
+  - linkName: torso_link
+    shapeType: 0
+    center: {x: 0, y: 0.377, z: 0.026}
+    boxSize: {x: 0.344, y: 0.754, z: 0.198}
+    capsuleRadius: 0
+    capsuleHeight: 0
+  - linkName: left_hip_pitch_link
+    shapeType: 1
+    center: {x: 0, y: -0.2, z: 0}
+    boxSize: {x: 0, y: 0, z: 0}
+    capsuleRadius: 0.05
+    capsuleHeight: 0.34
+  - linkName: left_knee_link
+    shapeType: 1
+    center: {x: 0, y: -0.2, z: 0}
+    boxSize: {x: 0, y: 0, z: 0}
+    capsuleRadius: 0.045
+    capsuleHeight: 0.34
+  - linkName: left_ankle_link
+    shapeType: 0
+    center: {x: 0, y: -0.0295, z: 0.05}
+    boxSize: {x: 0.08, y: 0.081, z: 0.3}
+    capsuleRadius: 0
+    capsuleHeight: 0
+  - linkName: right_hip_pitch_link
+    shapeType: 1
+    center: {x: 0, y: -0.2, z: 0}
+    boxSize: {x: 0, y: 0, z: 0}
+    capsuleRadius: 0.05
+    capsuleHeight: 0.34
+  - linkName: right_knee_link
+    shapeType: 1
+    center: {x: 0, y: -0.2, z: 0}
+    boxSize: {x: 0, y: 0, z: 0}
+    capsuleRadius: 0.045
+    capsuleHeight: 0.34
+  - linkName: right_ankle_link
+    shapeType: 0
+    center: {x: 0, y: -0.0295, z: 0.05}
+    boxSize: {x: 0.08, y: 0.081, z: 0.3}
+    capsuleRadius: 0
+    capsuleHeight: 0
