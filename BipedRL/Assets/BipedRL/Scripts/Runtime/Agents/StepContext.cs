@@ -15,6 +15,12 @@ namespace BipedRL.Agents
         /// <summary>The robot's sensors at the time of the decision.</summary>
         public RobotState State { get; private set; }
 
+        /// <summary>The velocity the robot is asked to move at.</summary>
+        public VelocityTarget Target { get; private set; }
+
+        /// <summary>The stepping rhythm the robot is asked to follow.</summary>
+        public GaitClock Gait { get; }
+
         /// <summary>Actions just chosen by the policy, clamped to [-1, 1].</summary>
         public IReadOnlyList<float> Actions { get; }
 
@@ -26,16 +32,19 @@ namespace BipedRL.Agents
         public IReadOnlyList<float> JointUpperLimits => robot.JointUpperLimits;
         public float DefaultBaseHeight => robot.DefaultBaseHeight;
 
-        public StepContext(RobotBody robot, IReadOnlyList<float> actions, IReadOnlyList<float> previousActions)
+        public StepContext(RobotBody robot, GaitClock gait, IReadOnlyList<float> actions,
+                           IReadOnlyList<float> previousActions)
         {
             this.robot = robot;
+            Gait = gait;
             Actions = actions;
             PreviousActions = previousActions;
         }
 
-        public void Update(RobotState state)
+        public void Update(RobotState state, VelocityTarget target)
         {
             State = state;
+            Target = target;
         }
     }
 }

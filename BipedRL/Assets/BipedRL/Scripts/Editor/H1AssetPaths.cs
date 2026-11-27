@@ -14,7 +14,7 @@ namespace BipedRL.Editor
         public const string ShapeSettings = ConfigsFolder + "/H1ShapeSettings.asset";
         public const string PrefabsFolder = "Assets/BipedRL/Prefabs";
         public const string Prefab = PrefabsFolder + "/H1.prefab";
-        public const string StandAgentPrefab = PrefabsFolder + "/H1StandAgent.prefab";
+        public const string LocomotionAgentPrefab = PrefabsFolder + "/H1LocomotionAgent.prefab";
 
         /// <summary>Turns an "Assets/..." path into an absolute file system path.</summary>
         public static string ToFullPath(string assetPath)

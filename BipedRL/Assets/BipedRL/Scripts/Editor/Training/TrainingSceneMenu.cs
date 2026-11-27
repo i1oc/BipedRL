@@ -10,28 +10,28 @@ using UnityEngine.SceneManagement;
 namespace BipedRL.Editor.Training
 {
     /// <summary>
-    /// Editor menu that creates the milestone 1 training scene: ground, light, camera and an
-    /// <see cref="AgentGridSpawner"/> with the stand agent prefab. An existing scene is never
-    /// overwritten.
+    /// Editor menu that creates the locomotion training scene: ground, light, camera and an
+    /// <see cref="AgentGridSpawner"/> with the locomotion agent prefab. An existing scene is
+    /// never overwritten.
     /// </summary>
     public static class TrainingSceneMenu
     {
         private const string ScenesFolder = "Assets/BipedRL/Scenes/Training";
-        private const string StandScenePath = ScenesFolder + "/StandTraining.unity";
+        private const string LocomotionScenePath = ScenesFolder + "/LocomotionTraining.unity";
 
-        [MenuItem("BipedRL/Training/Create Stand Training Scene")]
-        private static void CreateStandTrainingScene()
+        [MenuItem("BipedRL/Training/Create Locomotion Training Scene")]
+        private static void CreateLocomotionTrainingScene()
         {
-            if (File.Exists(H1AssetPaths.ToFullPath(StandScenePath)))
+            if (File.Exists(H1AssetPaths.ToFullPath(LocomotionScenePath)))
             {
-                Debug.Log($"{StandScenePath} already exists; nothing was changed.");
+                Debug.Log($"{LocomotionScenePath} already exists; nothing was changed.");
                 return;
             }
 
-            var agentPrefab = AssetDatabase.LoadAssetAtPath<Agent>(H1AssetPaths.StandAgentPrefab);
+            var agentPrefab = AssetDatabase.LoadAssetAtPath<Agent>(H1AssetPaths.LocomotionAgentPrefab);
             if (agentPrefab == null)
             {
-                Debug.LogError($"Could not find an agent prefab at {H1AssetPaths.StandAgentPrefab}.");
+                Debug.LogError($"Could not find an agent prefab at {H1AssetPaths.LocomotionAgentPrefab}. Create it first.");
                 return;
             }
 
@@ -54,8 +54,8 @@ namespace BipedRL.Editor.Training
             Camera.main.transform.SetPositionAndRotation(new Vector3(0f, 12f, -14f), Quaternion.Euler(40f, 0f, 0f));
 
             RobotSettingsAssets.EnsureFolder(ScenesFolder);
-            EditorSceneManager.SaveScene(scene, StandScenePath);
-            Debug.Log($"Created {StandScenePath}.");
+            EditorSceneManager.SaveScene(scene, LocomotionScenePath);
+            Debug.Log($"Created {LocomotionScenePath}.");
         }
     }
 }

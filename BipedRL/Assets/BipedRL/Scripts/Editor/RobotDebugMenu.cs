@@ -44,10 +44,18 @@ namespace BipedRL.Editor
         {
             RobotState state = robot.ReadState();
             var report = new StringBuilder($"{robot.name} state (angles in degrees, torque in N·m):\n");
-            report.AppendLine($"  base height {state.BaseHeight:F3} m, tilt {state.Tilt * Mathf.Rad2Deg:F1}, " +
-                              $"projected gravity {state.ProjectedGravity:F2}, angular velocity {state.BaseAngularVelocity:F2} rad/s");
-            report.AppendLine($"  foot contacts: {string.Join(", ", state.FootContacts)}, " +
-                              $"other body contact: {state.NonFootContact}");
+            report.AppendLine($"  base height {state.BaseHeight:F3} m, roll {state.Roll * Mathf.Rad2Deg:F1}, " +
+                              $"pitch {state.Pitch * Mathf.Rad2Deg:F1}, heading {state.Heading * Mathf.Rad2Deg:F1}, " +
+                              $"projected gravity {state.ProjectedGravity:F2}");
+            report.AppendLine($"  linear velocity {state.BaseLinearVelocity:F2} m/s, " +
+                              $"angular velocity {state.BaseAngularVelocity:F2} rad/s");
+            for (int foot = 0; foot < robot.FootCount; foot++)
+            {
+                report.AppendLine($"  foot {foot}: contact {state.FootContacts[foot]}, height {state.FootHeights[foot]:F3} m, " +
+                                  $"velocity {state.FootVelocities[foot]:F2} m/s");
+            }
+
+            report.AppendLine($"  pelvis contact {state.PelvisContact}, hip and knee contacts {state.LegContactCount}");
 
             for (int joint = 0; joint < robot.JointCount; joint++)
             {

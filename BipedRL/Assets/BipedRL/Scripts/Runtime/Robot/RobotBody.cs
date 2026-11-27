@@ -26,6 +26,11 @@ namespace BipedRL.Robot
         [Tooltip("Contact sensors of every body that is not a foot.")]
         [SerializeField] private ContactSensor[] otherBodies = Array.Empty<ContactSensor>();
 
+        // The pelvis is the root body; every other body that is not a foot is a hip or knee link.
+        private ContactSensor pelvisSensor;
+        private ContactSensor[] legSensors;
+        private ArticulationBody[] footBodies;
+
         // Reduced-coordinate buffers covering the whole articulation, reused on every call
         // so nothing is allocated during training.
         private readonly List<float> positionBuffer = new List<float>();
@@ -92,6 +97,10 @@ namespace BipedRL.Robot
             upperLimits = joints.Select(joint => joint.xDrive.upperLimit * Mathf.Deg2Rad).ToArray();
             state = new RobotState(joints.Length, feet.Length);
 
+            pelvisSensor = rootBody.GetComponent<ContactSensor>();
+            legSensors = otherBodies.Where(sensor => sensor != pelvisSensor).ToArray();
+            footBodies = feet.Select(foot => foot.GetComponent<ArticulationBody>()).ToArray();
+
             // The prefab root stays on the ground; only the articulation moves.
             groundHeight = transform.position.y;
         }
@@ -150,11 +159,13 @@ namespace BipedRL.Robot
         public RobotState ReadState()
         {
             Transform pelvis = rootBody.transform;
+            Vector3 forward = pelvis.forward;
             state.SetBase(
+                pelvis.InverseTransformDirection(rootBody.linearVelocity),
                 pelvis.InverseTransformDirection(rootBody.angularVelocity),
                 pelvis.InverseTransformDirection(Vector3.down),
                 pelvis.position.y - groundHeight,
-                Vector3.Angle(pelvis.up, Vector3.up) * Mathf.Deg2Rad);
+                Mathf.Atan2(forward.x, forward.z));
 
             rootBody.GetJointPositions(positionBuffer);
             rootBody.GetJointVelocities(velocityBuffer);
@@ -170,26 +181,29 @@ namespace BipedRL.Robot
 
             for (int foot = 0; foot < feet.Length; foot++)
             {
-                state.SetFootContact(foot, feet[foot].IsTouching);
+                ArticulationBody footBody = footBodies[foot];
+                state.SetFoot(foot, feet[foot].IsTouching, footBody.transform.position.y - groundHeight,
+                              footBody.linearVelocity);
             }
 
-            state.SetNonFootContact(AnyOtherBodyTouching());
+            state.SetBodyContacts(pelvisSensor.IsTouching, CountLegContacts());
 
             return state;
         }
 
-        // A plain loop instead of LINQ's Any, which would allocate on every read.
-        private bool AnyOtherBodyTouching()
+        // A plain loop instead of LINQ's Count, which would allocate on every read.
+        private int CountLegContacts()
         {
-            foreach (ContactSensor body in otherBodies)
+            int touching = 0;
+            foreach (ContactSensor body in legSensors)
             {
                 if (body.IsTouching)
                 {
-                    return true;
+                    touching++;
                 }
             }
 
-            return false;
+            return touching;
         }
 
         private void WriteJointValues(IReadOnlyList<float> values, List<float> reducedValues)
